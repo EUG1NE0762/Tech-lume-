@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Lume — Illuminate Your Vision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav">
+  <div class="container ni">
+    <a href="#hero" class="logo">Tech<span>Lume</span><span class="ldot"></span></a>
+    <ul class="nl">
+      <li><a href="#services" class="nl-a">Services</a></li>
+      <li><a href="#portfolio"    class="nl-a">Portfolio</a></li>
+      <li><a href="#about"        class="nl-a">About</a></li>
+      <li><a href="#team"         class="nl-a">Team</a></li>
+      <li><a href="#testimonials" class="nl-a">Clients</a></li>
+      <li><a href="#contact" class="btn btn-o" style="padding:.5rem 1.4rem">Contact Us</a></li>
+    </ul>
+    <div class="ham" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mm" id="mm">
+  <a href="#services"     class="ml">Services</a>
+  <a href="#portfolio"    class="ml">Portfolio</a>
+  <a href="#about"        class="ml">About</a>
+  <a href="#team"         class="ml">Team</a>
+  <a href="#testimonials" class="ml">Clients</a>
+  <a href="#contact"      class="ml">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hbg"></div><div class="horb"></div>
+  <div class="container">
+    <div class="hc">
+      <div class="htag"><span>✦</span> Creative &amp; Digital Agency</div>
+      <h1 class="hti">Illuminate<br>Your <em>Vision</em></h1>
+      <p class="hsub">Tech Lume is a full-spectrum creative agency specialising in web development, event planning, billboard advertising, house renovation, multimedia and more.</p>
+      <div class="hcta">
+        <a href="#services" class="btn">Explore Services ›</a>
+        <a href="#portfolio" class="btn btn-o">View Our Work</a>
+      </div>
+    </div>
+    <div class="hst">
+      <div><div class="sn" data-ct data-tg="250">0</div><div class="sl">Projects Delivered</div></div>
+      <div><div class="sn" data-ct data-tg="120">0</div><div class="sl">Happy Clients</div></div>
+      <div><div class="sn" data-ct data-tg="10">0</div><div class="sl">Team Members</div></div>
+      <div><div class="sn" data-ct data-tg="5">0</div><div class="sl">Years of Excellence</div></div>
+    </div>
+  </div>
+  <div class="shi">Scroll</div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="container">
+    <span class="stag rv">What We Do</span>
+    <h2 class="stit rv">Our <span class="acc">Services</span></h2>
+    <div class="div rv"></div>
+    <p class="ssub rv">From pixels to physical spaces — we craft experiences that captivate, connect, and convert.</p>
+
+    <!-- Grid holds both cards AND the full-width panels -->
+    <div class="sg" id="sGrid">
+
+      <!--  CARD 1: Web Development  -->
+      <div class="sc rv" data-p="web">
+        <div class="si">
+          <!-- Globe icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="1.6" width="28" height="28"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Web Development</h3>
+        <p>Blazing-fast, responsive websites and web applications built with cutting-edge technologies — from elegant landing pages to complete e-commerce platforms.</p>
+        <button class="lbtn" onclick="togglePanel('web',this)">Learn More <span class="arr">→</span></button>
+      </div>
+
+      <!--  CARD 2: Events & Photography  -->
+      <div class="sc rv" data-p="events">
+        <div class="si">
+          <!-- Camera icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="1.6" width="28" height="28"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3>Events &amp; Photography</h3>
+        <p>Professional event planning and photography for weddings, corporate functions, product launches and private celebrations. Every moment captured perfectly.</p>
+        <button class="lbtn" onclick="togglePanel('events',this)">Learn More <span class="arr">→</span></button>
+      </div>
+
+      <!--  CARD 3: Billboard Advertising  -->
+      <div class="sc rv" data-p="billboard">
+        <div class="si">
+          <!-- Megaphone icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="1.6" width="28" height="28"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </div>
+        <h3>Billboard Advertising</h3>
+        <p>High-impact outdoor advertising that stops traffic. We design, print and strategically place billboards that make your brand impossible to ignore.</p>
+        <button class="lbtn" onclick="togglePanel('billboard',this)">Learn More <span class="arr">→</span></button>
+      </div>
+
+      <!--  CARD 4: House Renovation  -->
+      <div class="sc rv" data-p="renovation">
+        <div class="si">
+          <!-- Home icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="1.6" width="28" height="28"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>House Renovation</h3>
+        <p>Transform living spaces with our expert renovation team. From initial concept design and 3D visualisation through to full construction and final styling.</p>
+        <button class="lbtn" onclick="togglePanel('renovation',this)">Learn More <span class="arr">→</span></button>
+      </div>
+
+      <!-- ════════════════════════════════════════
+           EXPANDED PANELS — hidden by default,
+           shown full-width inside the same grid
+      ════════════════════════════════════════ -->
+
+      <!-- ── PANEL: Web Development ── -->
+      <div class="spanel" id="panel-web">
+        <div class="pin">
+          <div class="pt">
+            <div class="ptag">🌐 Digital Solutions That Perform</div>
+            <h4>Web Development</h4>
+            <p>In today's digital-first world, your website is your most powerful business asset. At Tech Lume, we engineer websites that don't just look stunning — they <strong style="color:var(--wh)">perform</strong>. Our team combines clean code, intuitive UX design and SEO-optimised architecture to deliver digital experiences that convert visitors into loyal customers.</p>
+            <p>From a sleek portfolio site to a high-traffic e-commerce store, every solution is tailored to your goals, audience and brand identity — built on modern stacks for speed, security and scalability.</p>
+            <ul class="pf">
+              <li>Custom responsive websites</li><li>E-commerce &amp; online stores</li>
+              <li>Landing page design</li><li>Web app development</li>
+              <li>CMS integration (WordPress etc.)</li><li>SEO-optimised architecture</li>
+              <li>Website maintenance &amp; hosting</li><li>Speed &amp; performance audits</li>
+            </ul>
+            <div class="pcta">
+              <a href="#contact" class="btn">Get a Quote ›</a>
+              <a href="#portfolio" class="btn btn-o">View Web Projects</a>
+            </div>
+          </div>
+          <div class="pg">
+            <div class="pgt">Our Web Work</div>
+            <div class="photos">
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&q=80','Corporate Website Design')"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=380&q=70" alt=""/><span class="phl">Corporate Website</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&q=80','Web Development Process')"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=380&q=70" alt=""/><span class="phl">Development Process</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=80','UI/UX Design')"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=380&q=70" alt=""/><span class="phl">UI / UX Design</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900&q=80','E-commerce Platform')"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=380&q=70" alt=""/><span class="phl">E-commerce Store</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=900&q=80','Mobile-First Design')"><img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=380&q=70" alt=""/><span class="phl">Mobile-First Design</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80','Analytics Dashboard')"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=380&q=70" alt=""/><span class="phl">Analytics Dashboard</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PANEL: Events & Photography ── -->
+      <div class="spanel" id="panel-events">
+        <div class="pin">
+          <div class="pt">
+            <div class="ptag">📸 Moments Worth Remembering</div>
+            <h4>Events &amp; Photography</h4>
+            <p>A perfectly executed event leaves a lasting impression on every guest. Our events team handles every detail — from venue styling and logistics coordination to live photography and video coverage — so you can be fully present in the moment.</p>
+            <p>Our photographers blend photojournalistic instinct with fine-art composition, delivering images that authentically tell your story. Whether it's an intimate wedding or a high-profile corporate gala, we approach every shoot with the same passion and precision.</p>
+            <ul class="pf">
+              <li>Wedding planning &amp; photography</li><li>Corporate events &amp; conferences</li>
+              <li>Birthday &amp; private parties</li><li>Product launch events</li>
+              <li>Photo editing &amp; retouching</li><li>Same-day photo delivery</li>
+              <li>Drone aerial photography</li><li>Event video coverage</li>
+            </ul>
+            <div class="pcta">
+              <a href="#contact" class="btn">Book an Event ›</a>
+              <a href="#portfolio" class="btn btn-o">See Event Gallery</a>
+            </div>
+          </div>
+          <div class="pg">
+            <div class="pgt">Events We've Covered</div>
+            <div class="photos">
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80','Elegant Wedding Ceremony')"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=380&q=70" alt=""/><span class="phl">Elegant Wedding</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80','Wedding Reception')"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=380&q=70" alt=""/><span class="phl">Wedding Reception</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1464047736614-af63643285bf?w=900&q=80','Corporate Conference')"><img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=380&q=70" alt=""/><span class="phl">Corporate Conference</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=900&q=80','Corporate Gala Night')"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=380&q=70" alt=""/><span class="phl">Corporate Gala</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&q=80','Birthday Celebration')"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=380&q=70" alt=""/><span class="phl">Birthday Celebration</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=900&q=80','Private Party')"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=380&q=70" alt=""/><span class="phl">Private Party</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PANEL: Billboard Advertising ── -->
+      <div class="spanel" id="panel-billboard">
+        <div class="pin">
+          <div class="pt">
+            <div class="ptag">🏙️ Brand Visibility at Scale</div>
+            <h4>Billboard Advertising</h4>
+            <p>Outdoor advertising remains one of the most powerful tools for building brand awareness and driving local business. Tech Lume offers end-to-end billboard services — from creative design concepts and high-resolution printing to strategic placement at high-traffic locations across Zambia.</p>
+            <p>Our design team crafts visuals that communicate your brand message in seconds. Bold typography, striking imagery and clear calls-to-action ensure your billboard gets noticed — and gets remembered.</p>
+            <ul class="pf">
+              <li>Billboard graphic design</li><li>Large-format printing</li>
+              <li>Strategic site selection</li><li>Roadside hoarding campaigns</li>
+              <li>Digital billboard content</li><li>Vehicle wraps &amp; fleet branding</li>
+              <li>Poster &amp; banner production</li><li>Campaign performance tracking</li>
+            </ul>
+            <div class="pcta">
+              <a href="#contact" class="btn">Start a Campaign ›</a>
+              <a href="#portfolio" class="btn btn-o">View Ad Portfolio</a>
+            </div>
+          </div>
+          <div class="pg">
+            <div class="pgt">Advertising Campaigns</div>
+            <div class="photos">
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=900&q=80','City Billboard Campaign')"><img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=380&q=70" alt=""/><span class="phl">City Campaign</span></div>
+              <div class="ph" onclick="openLbUrl('https://https://unsplash.com/photos/different-vehicles-on-road-near-buildings-with-billboards-during-daytime-6VBVp-V0txQ','Roadside Billboard')"><img src="https://unsplash.com/photos/different-vehicles-on-road-near-buildings-with-billboards-during-daytime-6VBVp-V0txQ" alt=""/><span class="phl">Roadside Billboard</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?w=900&q=80','Brand Poster Design')"><img src="https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?w=380&q=70" alt=""/><span class="phl">Brand Poster</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=900&q=80','Product Launch Ad')"><img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=380&q=70" alt=""/><span class="phl">Product Launch Ad</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80','Neon Signage')"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=380&q=70" alt=""/><span class="phl">Neon Signage</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80','Vehicle Branding')"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=380&q=70" alt=""/><span class="phl">Vehicle Branding</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PANEL: House Renovation ── -->
+      <div class="spanel" id="panel-renovation">
+        <div class="pin">
+          <div class="pt">
+            <div class="ptag">🏠 Spaces That Inspire Living</div>
+            <h4>House Renovation</h4>
+            <p>Your home is your sanctuary, and it deserves to reflect who you are. Tech Lume's renovation division brings together skilled craftsmen, interior designers and project managers to deliver transformative renovations that combine functionality with aesthetic excellence.</p>
+            <p>We handle every phase from initial design consultation and 3D visualisation through to construction, finishing and final styling — ensuring a seamless, stress-free experience for every homeowner.</p>
+            <ul class="pf">
+              <li>Full home renovation</li><li>Kitchen remodelling</li>
+              <li>Bathroom upgrades</li><li>Interior design &amp; styling</li>
+              <li>3D space visualisation</li><li>Tiling, painting &amp; plastering</li>
+              <li>Electrical &amp; plumbing upgrades</li><li>Commercial fit-outs</li>
+            </ul>
+            <div class="pcta">
+              <a href="#contact" class="btn">Get a Free Quote ›</a>
+              <a href="#portfolio" class="btn btn-o">See Renovations</a>
+            </div>
+          </div>
+          <div class="pg">
+            <div class="pgt">Renovation Showcase</div>
+            <div class="photos">
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=900&q=80','Modern Kitchen Remodel')"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=380&q=70" alt=""/><span class="phl">Modern Kitchen</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80','Living Room Makeover')"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=380&q=70" alt=""/><span class="phl">Living Room</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80','Luxury Bathroom')"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=380&q=70" alt=""/><span class="phl">Luxury Bathroom</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80','Interior Design')"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=380&q=70" alt=""/><span class="phl">Interior Design</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=80','Bedroom Transformation')"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=380&q=70" alt=""/><span class="phl">Bedroom Transformation</span></div>
+              <div class="ph" onclick="openLbUrl('https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=900&q=80','Outdoor Patio')"><img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=380&q=70" alt=""/><span class="phl">Outdoor Patio</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END PANELS -->
+
+    </div><!-- /sg -->
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section id="portfolio">
+  <div class="container">
+    <span class="stag rv">Our Work</span>
+    <h2 class="stit rv">Featured <span class="acc">Portfolio</span></h2>
+    <div class="div rv"></div>
+    <div class="pf-btns rv">
+      <button class="fb on"  data-f="all">All Work</button>
+      <button class="fb" data-f="web">Web</button>
+      <button class="fb" data-f="events">Events</button>
+      <button class="fb" data-f="billboard">Billboard</button>
+      <button class="fb" data-f="renovation">Renovation</button>
+    </div>
+    <div class="pgrid">
+      <div class="pi rv" data-c="web"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&q=70" alt="Corporate Website"/><div class="po"><div class="zi">⊕</div><h4>Corporate Website</h4><span>Web Development</span></div></div>
+      <div class="pi rv" data-c="events"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&q=70" alt="Grand Wedding"/><div class="po"><div class="zi">⊕</div><h4>Grand Wedding</h4><span>Events &amp; Photography</span></div></div>
+      <div class="pi rv" data-c="billboard"><img src="https://unsplash.com/photos/different-vehicles-on-road-near-buildings-with-billboards-during-daytime-6VBVp-V0txQ"/><div class="po"><div class="zi">⊕</div><h4>City Billboard</h4><span>Outdoor Advertising</span></div></div>
+      <div class="pi rv" data-c="renovation"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=500&q=70" alt="Modern Kitchen"/><div class="po"><div class="zi">⊕</div><h4>Modern Kitchen</h4><span>House Renovation</span></div></div>
+      <div class="pi rv" data-c="web"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=500&q=70" alt="E-commerce"/><div class="po"><div class="zi">⊕</div><h4>E-commerce Platform</h4><span>Web Development</span></div></div>
+      <div class="pi rv" data-c="events"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=70" alt="Corporate Gala"/><div class="po"><div class="zi">⊕</div><h4>Corporate Gala</h4><span>Events Planning</span></div></div>
+      <div class="pi rv" data-c="billboard"><img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=500&q=70" alt="Product Ad"/><div class="po"><div class="zi">⊕</div><h4>Product Launch Ad</h4><span>Billboard Advertising</span></div></div>
+      <div class="pi rv" data-c="renovation"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=70" alt="Living Room"/><div class="po"><div class="zi">⊕</div><h4>Living Room Makeover</h4><span>House Renovation</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" onclick="lbBg(event)">
+  <div class="lbi">
+    <button class="lbx" onclick="closeLb()">✕</button>
+    <button class="lbp" onclick="lbNav(-1)">‹</button>
+    <button class="lbn" onclick="lbNav(1)">›</button>
+    <img id="lbimg" src="" alt=""/>
+    <p class="lbc" id="lbcap"></p>
+  </div>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<section id="stats">
+  <div class="container">
+    <div class="stg">
+      <div class="rv"><div class="cn" data-ct data-tg="250">0</div><div class="cl">Projects Delivered</div></div>
+      <div class="rv"><div class="cn" data-ct data-tg="120">0</div><div class="cl">Happy Clients</div></div>
+      <div class="rv"><div class="cn" data-ct data-tg="15">0</div><div class="cl">Industry Awards</div></div>
+      <div class="rv"><div class="cn" data-ct data-tg="5">0</div><div class="cl">Years Experience</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="container">
+    <div class="ag">
+      <div class="aiw rl">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Tech Lume team"/>
+        <div class="abadge"><strong>5+</strong><span>Years of<br>Excellence</span></div>
+      </div>
+      <div class="aco rr">
+        <span class="stag">Who We Are</span>
+        <h2 class="stit">Crafting <span class="acc">Stories</span><br>That Matter</h2>
+        <div class="div"></div>
+        <p>Tech Lume is a dynamic, multi-disciplinary creative company dedicated to transforming ideas into impactful realities. We blend technology, artistry and strategy to deliver results that exceed expectations.</p>
+        <p>Whether you need a stunning website, flawless event coverage, a billboard campaign that stops traffic, or a home transformed into your dream space — we have the talent and passion to make it happen.</p>
+        <ul class="alist">
+          <li>Full-service Tech &amp; Creative agency</li>
+          <li>Expert events planning and photography</li>
+          <li>High-impact advertising and branding</li>
+          <li>Quality-driven house renovation services</li>
+        </ul>
+        <a href="#contact" class="btn" style="margin-top:1.5rem">Work With Us ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══ -->
+<section id="team">
+  <div class="container">
+    <span class="stag rv">The Talent</span>
+    <h2 class="stit rv">Meet Our <span class="acc">Team</span></h2>
+    <div class="div rv"></div>
+    <p class="ssub rv">A passionate squad of creators, thinkers and builders — each one exceptional in their craft.</p>
+    <div class="tgrid">
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#1a0a00,#3d2000)"><img src="images/hello.jpg" alt="Lee"></div><div class="ti"><h4>Lee</h4><div class="role">CEO &amp; Creative Director</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#001a0a,#003d20)"><img src="images/hello.jpg" alt="Patrick"></div><div class="ti"><h4>Patrick</h4><div class="role">Operations &amp; Project Coordinator</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#00001a,#00003d)"><img src="images/hello.jpg" alt="Bornface"></div><div class="ti"><h4>Bornface</h4><div class="role">Finance &amp; Accounts Officer</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#1a0015,#3d0035)"><img src="images/hello.jpg" alt="Charles"></div><div class="ti"><h4>Charles</h4><div class="role">Marketing &amp; Digital Specialist</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#0a1a00,#203d00)"><img src="images/hello.jpg" alt="Mark"></div><div class="ti"><h4>Mark</h4><div class="role">HR &amp; Talent Coordinator</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#1a1000,#3d2800)"><img src="images/hello.jpg" alt="Jere"></div><div class="ti"><h4>Jere</h4><div class="role">Lead Graphic &amp; Brand Designer</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#001510,#003028)"><img src="images/hello.jpg" alt="Eugine"></div><div class="ti"><h4>Eugine</h4><div class="role">Web Developer &amp; Administrator</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#1a0800,#3d1800)"><img src="images/hello.jpg" alt="Martin"></div><div class="ti"><h4>Martin</h4><div class="role">Videographer &amp; Video Editor</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#001a1a,#003d3d)"><img src="images/hello.jpg" alt="Zango"></div><div class="ti"><h4>Zango</h4><div class="role">Photographer &amp; Photo Editor</div></div></div>
+      <div class="tc rv"><div class="tp" style="background:linear-gradient(135deg,#15001a,#30003d)"><img src="images/hello.jpg" alt="Jones"></div><div class="ti"><h4>Jones</h4><div class="role">Multimedia Designer &amp; Animator</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="container">
+    <span class="stag rv">Client Love</span>
+    <h2 class="stit rv">What Our <span class="acc">Clients</span> Say</h2>
+    <div class="div rv"></div>
+    <div class="tcar rv">
+      <div class="ttr" id="ttr">
+        <div class="tcard"><div class="ts">★★★★★</div><p class="tq">"Tech Lume built our entire brand from scratch — logo, website, social media. The results were breathtaking and our leads doubled within 3 months."</p><div class="ta"><div class="tav">SM</div><div><div class="tn">Sarah Mwale</div><div class="tp2">CEO, Lusaka Fresh Foods</div></div></div></div>
+        <div class="tcard"><div class="ts">★★★★★</div><p class="tq">"Our wedding was an absolute dream. Zango captured moments we'll treasure forever. The team was professional, creative, and so easy to work with."</p><div class="ta"><div class="tav">TN</div><div><div class="tn">Thandiwe &amp; Ngoni</div><div class="tp2">Newlyweds, Ndola</div></div></div></div>
+        <div class="tcard"><div class="ts">★★★★★</div><p class="tq">"The billboard campaign they designed increased our foot traffic by 40%. Their design sense is unmatched — bold, modern and effective."</p><div class="ta"><div class="tav">PK</div><div><div class="tn">Peter Kasonde</div><div class="tp2">Marketing Director, ZamMall</div></div></div></div>
+        <div class="tcard"><div class="ts">★★★★☆</div><p class="tq">"They renovated our home and the transformation was incredible. On time, on budget and the quality exceeded every expectation."</p><div class="ta"><div class="tav">CB</div><div><div class="tn">Chanda &amp; Bwalya</div><div class="tp2">Homeowners, Livingstone</div></div></div></div>
+        <div class="tcard"><div class="ts">★★★★★</div><p class="tq">"Tech Lume handled our annual corporate conference end-to-end. Flawless execution every time — we'll never use anyone else."</p><div class="ta"><div class="tav">JN</div><div><div class="tn">James Nkandu</div><div class="tp2">COO, Copper Bridge Ltd</div></div></div></div>
+      </div>
+      <div class="cc">
+        <button class="cb" id="tprev">‹</button>
+        <div class="cds" id="tdots"></div>
+        <button class="cb" id="tnext">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="container">
+    <span class="stag rv">Get In Touch</span>
+    <h2 class="stit rv">Let's <span class="acc">Build</span> Something<br>Great Together</h2>
+    <div class="div rv"></div>
+    <div class="cg">
+      <div class="ci rl">
+        <h3>We'd love to hear from you.</h3>
+        <p>Whether you have a project idea, a question about our services, or just want to say hello — our team is ready to respond within 24 hours.</p>
+        <div class="citem"><div class="cicon">📍</div><div><h5>Our Location</h5><span>Plot 14 Cairo Road, Lusaka, Zambia</span></div></div>
+        <div class="citem"><div class="cicon">📞</div><div><h5>Call Us</h5><span>+260 979 910 599</span></div></div>
+        <div class="citem"><div class="cicon">✉️</div><div><h5>Email Us</h5><span>hello@techlume.co.zm</span></div></div>
+        <div class="citem"><div class="cicon">🕐</div><div><h5>Working Hours</h5><span>Mon – Sat: 08:00 – 18:00</span></div></div>
+      </div>
+      <div class="rr">
+        <form class="cform" id="cform" novalidate>
+          <div class="fr">
+            <div class="fg" id="fg-n"><label for="fn">Full Name</label><input type="text" id="fn" placeholder="Your full name"/><span class="em">Please enter your name.</span></div>
+            <div class="fg" id="fg-e"><label for="fe">Email Address</label><input type="email" id="fe" placeholder="your@email.com"/><span class="em">Please enter a valid email.</span></div>
+          </div>
+          <div class="fr">
+            <div class="fg" id="fg-p"><label for="fp">Phone Number</label><input type="tel" id="fp" placeholder="+260 ..."/><span class="em">Please enter your phone number.</span></div>
+            <div class="fg" id="fg-s"><label for="fs">Service Interested In</label>
+              <select id="fs"><option value="">Select a service…</option><option value="web">Web Development</option><option value="events">Events &amp; Photography</option><option value="billboard">Billboard Advertising</option><option value="renovation">House Renovation</option><option value="other">Other</option></select>
+            </div>
+          </div>
+          <div class="fg" id="fg-m"><label for="fm">Your Message</label><textarea id="fm" placeholder="Tell us about your project…"></textarea><span class="em">Please write your message (min 10 chars).</span></div>
+          <button type="submit" class="btn fsub">Send Message ✦</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div class="fb2">
+        <div class="logo" style="font-size:1.6rem">Tech<span>Lume</span><span class="ldot"></span></div>
+        <p>Illuminating brands, spaces and experiences across Zambia and beyond. Your vision, our passion.</p>
+        <div class="slinks">
+
+          <!-- Facebook -->
+          <a href="#" class="slink sl-fb" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+
+          <!-- Instagram -->
+          <a href="#" class="slink sl-ig" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+
+          <!-- X (Twitter) -->
+          <a href="#" class="slink sl-tw" title="X / Twitter">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+
+          <!-- YouTube -->
+          <a href="#" class="slink sl-yt" title="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="#" class="slink sl-li" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="#" class="slink sl-wa" title="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+
+          <!-- TikTok -->
+          <a href="#" class="slink sl-tk" title="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+
+        </div>
+      </div>
+      <div class="fcol"><h5>Services</h5><ul><li><a href="#services">Web Development</a></li><li><a href="#services">Events &amp; Photography</a></li><li><a href="#services">Billboard Advertising</a></li><li><a href="#services">House Renovation</a></li></ul></div>
+      <div class="fcol"><h5>Company</h5><ul><li><a href="#about">About Us</a></li><li><a href="#team">Our Team</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#testimonials">Testimonials</a></li></ul></div>
+      <div class="fcol"><h5>Contact</h5><ul><li><a href="tel:+260979910599">+260 979 910 599</a></li><li><a href="mailto:hello@techlume.co.zm">hello@techlume.co.zm</a></li><li><a href="#contact">Get a Quote</a></li><li><a href="#contact">Support</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <p>© <span id="yr"></span> Tech Lume. All rights reserved.</p>
+      <p>Designed &amp; Built with ❤ by Tech Lume</p>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="toast" id="toast">✓ Message sent! We'll be in touch within 24 hours.</div>
+
+<!-- ════════════════════ JAVASCRIPT ════════════════════ -->
+  <script src="script.js"></script>
+</body>
+</html>
