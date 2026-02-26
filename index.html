@@ -344,13 +344,130 @@
     }
     .service-card:hover .service-learn { gap: .8rem; }
 
+    /* Category Selection */
+    .category-selection {
+      margin-bottom: 3rem;
+    }
+
+    .category-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--clr-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .category-select {
+      width: 100%;
+      max-width: 400px;
+      padding: 1rem 1.5rem;
+      background: var(--clr-surface);
+      color: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius);
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .category-select:hover {
+      border-color: var(--clr-accent);
+    }
+
+    .category-select:focus {
+      outline: none;
+      border-color: var(--clr-accent);
+      box-shadow: 0 0 0 3px rgba(240,165,0,.1);
+    }
+
+    /* Services Gallery Container */
+    .services-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      min-height: 400px;
+    }
+
+    /* Gallery Item */
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all var(--transition);
+    }
+
+    .gallery-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+      padding: 1.5rem;
+      transform: translateY(100%);
+      transition: transform var(--transition);
+    }
+
+    .gallery-item:hover .gallery-item-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-item-title {
+      font-family: var(--ff-head);
+      font-size: 1.5rem;
+      color: var(--clr-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-item-description {
+      font-size: 0.85rem;
+      color: var(--clr-muted);
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--clr-muted);
+      grid-column: 1 / -1;
+    }
+
     /* Service Gallery (shown on "Learn More" click) */
     .service-gallery {
-      display: none;
+      display: none !important;
       margin-top: 1.5rem;
-      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
-    .service-gallery.active { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; }
+    .service-gallery.active { 
+      display: grid !important; 
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+      gap: .5rem; 
+      opacity: 1;
+    }
     .service-gallery img {
       width: 100%; aspect-ratio: 1;
       object-fit: cover; border-radius: 6px;
@@ -359,6 +476,22 @@
       filter: brightness(.85);
     }
     .service-gallery img:hover { transform: scale(1.04); filter: brightness(1); }
+    
+    /* Responsive service gallery */
+    @media (max-width: 900px) {
+      .service-gallery.active { 
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+      }
+    }
+    @media (max-width: 700px) {
+      .service-gallery.active { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: .4rem;
+      }
+      .service-gallery img {
+        border-radius: 4px;
+      }
+    }
 
     /* ============================================================
        PORTFOLIO / GALLERY SECTION
@@ -872,6 +1005,26 @@
       From pixels to physical spaces — we craft experiences that captivate, connect, and convert.
     </p>
 
+    <!-- Category Selection Dropdown -->
+    <div class="category-selection">
+      <label for="service-category" class="category-label">View All Services Gallery</label>
+      <select id="service-category" class="category-select">
+        <option value="">Select a category to view more pictures...</option>
+        <option value="web">Web Development (8 images)</option>
+        <option value="events">Events & Photography (8 images)</option>
+        <option value="billboard">Billboard Advertising (8 images)</option>
+        <option value="renovation">House Renovation (8 images)</option>
+        <option value="all">All Services (32 images)</option>
+      </select>
+    </div>
+
+    <!-- Services Gallery Container -->
+    <div class="services-gallery" id="services-gallery-container">
+      <div class="loading">
+        <p>Select a category from the dropdown to view our complete gallery</p>
+      </div>
+    </div>
+
     <div class="services-grid">
 
       <!-- Service Card 1: Web Development -->
@@ -879,11 +1032,16 @@
         <div class="service-icon">🌐</div>
         <h3>Web Development</h3>
         <p>Blazing-fast, responsive websites and web apps built with cutting-edge technologies. From landing pages to full e-commerce platforms.</p>
-        <div class="service-learn" onclick="toggleGallery(this, 'web')">Learn More <span>→</span></div>
+        <div class="service-learn" onclick="console.log('Learn More clicked for web'); toggleGallery(this, 'web')">Learn More <span>→</span></div>
         <div class="service-gallery" id="gallery-web">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&q=70" alt="Web Dev 1" onclick="openLightbox(this)"/>
-          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=300&q=70" alt="Web Dev 2" onclick="openLightbox(this)"/>
-          <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=300&q=70" alt="Web Dev 3" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&q=70" alt="Modern Website Design" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=300&q=70" alt="E-commerce Platform" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&q=70" alt="Mobile App Interface" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=300&q=70" alt="Web Development" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&q=70" alt="UI/UX Design" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=300&q=70" alt="Responsive Layout" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300&q=70" alt="Web Performance" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&q=70" alt="Security & Compliance" onclick="openLightbox(this)"/>
         </div>
       </div>
 
@@ -892,11 +1050,16 @@
         <div class="service-icon">📸</div>
         <h3>Events &amp; Photography</h3>
         <p>Professional event planning and photography for weddings, corporate parties, product launches and beyond. Every moment captured perfectly.</p>
-        <div class="service-learn" onclick="toggleGallery(this, 'events')">Learn More <span>→</span></div>
+        <div class="service-learn" onclick="console.log('Learn More clicked for events'); toggleGallery(this, 'events')">Learn More <span>→</span></div>
         <div class="service-gallery" id="gallery-events">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=300&q=70" alt="Wedding 1" onclick="openLightbox(this)"/>
-          <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=300&q=70" alt="Event 2" onclick="openLightbox(this)"/>
-          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=300&q=70" alt="Event 3" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=300&q=70" alt="Wedding Photography" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=300&q=70" alt="Corporate Event" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=300&q=70" alt="Product Launch" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=300&q=70" alt="Private Celebration" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1523503433664-037e378d7094?w=300&q=70" alt="Event Planning" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&q=70" alt="Venue Decoration" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=70" alt="Catering Services" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=300&q=70" alt="Entertainment" onclick="openLightbox(this)"/>
         </div>
       </div>
 
@@ -905,11 +1068,16 @@
         <div class="service-icon">🏙️</div>
         <h3>Billboard Advertising</h3>
         <p>High-impact outdoor advertising that grabs attention. We design, produce and place billboards that make your brand impossible to ignore.</p>
-        <div class="service-learn" onclick="toggleGallery(this, 'billboard')">Learn More <span>→</span></div>
+        <div class="service-learn" onclick="console.log('Learn More clicked for billboard'); toggleGallery(this, 'billboard')">Learn More <span>→</span></div>
         <div class="service-gallery" id="gallery-billboard">
-          <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=300&q=70" alt="Billboard 1" onclick="openLightbox(this)"/>
-          <img src="https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?w=300&q=70" alt="Billboard 2" onclick="openLightbox(this)"/>
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=300&q=70" alt="Billboard 3" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=300&q=70" alt="Digital Billboard" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?w=300&q=70" alt="Outdoor Advertising" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=300&q=70" alt="Billboard Design" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=300&q=70" alt="Highway Billboard" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70" alt="Urban Advertising" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=300&q=70" alt="Brand Visibility" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=300&q=70" alt="Night Advertising" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&q=70" alt="Interactive Billboard" onclick="openLightbox(this)"/>
         </div>
       </div>
 
@@ -918,10 +1086,10 @@
         <div class="service-icon">🏠</div>
         <h3>House Renovation</h3>
         <p>Transform living spaces with our expert renovation team. From concept design to full construction, we bring your dream home to life.</p>
-        <div class="service-learn" onclick="toggleGallery(this, 'renovation')">Learn More <span>→</span></div>
+        <div class="service-learn" onclick="console.log('Learn More clicked for renovation'); toggleGallery(this, 'renovation')">Learn More <span>→</span></div>
         <div class="service-gallery" id="gallery-renovation">
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&q=70" alt="Renovation 1" onclick="openLightbox(this)"/>
-          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300&q=70" alt="Renovation 2" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&q=70" alt="Kitchen Renovation" onclick="openLightbox(this)"/>
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300&q=70" alt="Bathroom Renovation" onclick="openLightbox(this)"/>
           <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=300&q=70" alt="Renovation 3" onclick="openLightbox(this)"/>
         </div>
       </div>
@@ -1006,7 +1174,7 @@
       </div>
 
       <div class="portfolio-item reveal" data-cat="billboard">
-        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=500&q=70" alt="Product Launch Ad"/>
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=70" alt="Product Launch Ad"/>
         <div class="portfolio-overlay">
           <div class="zoom-icon">⊕</div>
           <h4>Product Launch Ad</h4>
@@ -1123,7 +1291,7 @@
       <!-- Team members populated from the data provided -->
       <!-- Position 1: Lee - CEO & Creative Director -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#1a0a00,#3d2000)">👑</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#1a0a00,#3d2000)"><img></div>
         <div class="team-info">
           <h4>Lee</h4>
           <div class="role">CEO &amp; Creative Director</div>
@@ -1132,7 +1300,8 @@
 
       <!-- Position 2: Patrick - Operations Manager -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#001a0a,#003d20)">📋</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#001a0a,#003d20)"><img src="images/Patrick.jpeg"
+          ></div>
         <div class="team-info">
           <h4>Patrick</h4>
           <div class="role">Operations &amp; Project Coordinator</div>
@@ -1141,7 +1310,7 @@
 
       <!-- Position 3: Bornface - Finance Manager -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#00001a,#00003d)">💰</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#00001a,#00003d)"><img src="images/Born.jpeg"></div>
         <div class="team-info">
           <h4>Bornface</h4>
           <div class="role">Finance &amp; Accounts Officer</div>
@@ -1150,7 +1319,7 @@
 
       <!-- Position 4: Charles - Marketing Manager -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#1a0015,#3d0035)">📣</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#1a0015,#3d0035)"><img src="images/Bazungu.jpeg"></div>
         <div class="team-info">
           <h4>Charles</h4>
           <div class="role">Marketing &amp; Digital Specialist</div>
@@ -1159,7 +1328,7 @@
 
       <!-- Position 5: Mark - HR Manager -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#0a1a00,#203d00)">🤝</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#0a1a00,#203d00)"><img></div>
         <div class="team-info">
           <h4>Mark</h4>
           <div class="role">HR &amp; Talent Coordinator</div>
@@ -1168,7 +1337,7 @@
 
       <!-- Position 6: Jere - Lead Graphic Designer -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#1a1000,#3d2800)">🎨</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#1a1000,#3d2800)"><img src="images/Member.jpeg"></div>
         <div class="team-info">
           <h4>Jere</h4>
           <div class="role">Lead Graphic &amp; Brand Designer</div>
@@ -1177,7 +1346,7 @@
 
       <!-- Position 7: Eugine - Web Developer -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#001510,#003028)">💻</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#001510,#003028)"><img src="images/Eugine.jpg"></div>
         <div class="team-info">
           <h4>Eugine</h4>
           <div class="role">Web Developer &amp; Administrator</div>
@@ -1186,7 +1355,7 @@
 
       <!-- Position 8: Martin - Videographer -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#1a0800,#3d1800)">🎬</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#1a0800,#3d1800)"><img src="images/Martin.jpeg"></div>
         <div class="team-info">
           <h4>Martin</h4>
           <div class="role">Videographer &amp; Video Editor</div>
@@ -1195,7 +1364,7 @@
 
       <!-- Position 9: Zango - Photographer -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#001a1a,#003d3d)">📷</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#001a1a,#003d3d)"><img src="WhatsApp Image 2026-02-23 at 17.17.14.jpeg"></div>
         <div class="team-info">
           <h4>Zango</h4>
           <div class="role">Photographer &amp; Photo Editor</div>
@@ -1204,7 +1373,7 @@
 
       <!-- Position 10: Jones - Multimedia Designer -->
       <div class="team-card reveal">
-        <div class="team-photo" style="background:linear-gradient(135deg,#15001a,#30003d)">✨</div>
+        <div class="team-photo" style="background:linear-gradient(135deg,#15001a,#30003d)"><img src="jones.jpeg"></div>
         <div class="team-info">
           <h4>Jones</h4>
           <div class="role">Multimedia Designer &amp; Animator</div>
@@ -1318,7 +1487,7 @@
           <div class="contact-icon">📍</div>
           <div>
             <h5>Our Location</h5>
-            <span>Plot 14 Cairo Road, Lusaka, Zambia</span>
+            <span>Kalewa Rd, Ndola, Zambia</span>
           </div>
         </div>
 
@@ -1573,19 +1742,57 @@
      5. SERVICE GALLERY TOGGLE ("Learn More")
   ============================================================= */
   function toggleGallery(btn, serviceId) {
-    const gallery = document.getElementById('gallery-' + serviceId);
+    console.log('toggleGallery called with serviceId:', serviceId);
+    
+    // Try to find the gallery using both methods (ID and closest card)
+    let gallery = document.getElementById('gallery-' + serviceId);
+    if (!gallery) {
+      const card = btn.closest('.service-card');
+      if (card) {
+        gallery = card.querySelector('.service-gallery');
+      }
+    }
+    
+    console.log('Found gallery:', gallery);
+    
+    if (!gallery) {
+      console.error('Gallery not found for serviceId:', serviceId);
+      alert('Error: Gallery not found for service "' + serviceId + '"');
+      return;
+    }
+    
     const isActive = gallery.classList.contains('active');
+    console.log('Gallery is active:', isActive);
 
     // Close all open galleries first
-    document.querySelectorAll('.service-gallery.active').forEach(g => g.classList.remove('active'));
-    document.querySelectorAll('.service-learn').forEach(b => b.querySelector('span').textContent = '→');
+    document.querySelectorAll('.service-gallery.active').forEach(g => {
+      g.classList.remove('active');
+      console.log('Closing gallery:', g.id);
+    });
+    document.querySelectorAll('.service-learn').forEach(b => {
+      const span = b.querySelector('span');
+      if (span) {
+        span.textContent = '→';
+      }
+    });
 
     if (!isActive) {
       gallery.classList.add('active');
-      btn.querySelector('span').textContent = '↑';
+      const span = btn.querySelector('span');
+      if (span) {
+        span.textContent = '↑';
+      }
+      // Populate the main services gallery area with this category and show options
+      if (serviceId) showGallery(serviceId, true);
       // Smooth scroll so gallery is visible
-      setTimeout(() => gallery.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      setTimeout(() => {
+        gallery.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
     }
+    
+    console.log('Gallery classes after toggle:', gallery.classList);
+    console.log('Gallery style.display:', gallery.style.display);
+    console.log('Gallery computed style:', window.getComputedStyle(gallery).display);
   }
 
   /* =============================================================
@@ -1642,6 +1849,290 @@
     if (e.key === 'Escape')     closeLightbox();
     if (e.key === 'ArrowLeft')  lightboxNav(-1);
     if (e.key === 'ArrowRight') lightboxNav(1);
+  });
+
+  /* =============================================================
+     SERVICES GALLERY DROPDOWN FUNCTIONALITY
+  ============================================================= */
+  // Service categories and their respective images
+  const serviceGalleries = {
+    web: [
+      {
+        title: "Modern Website Design",
+        description: "Clean and responsive web design for modern businesses",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=70"
+      },
+      {
+        title: "E-commerce Platform",
+        description: "Complete online shopping solution with payment integration",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=800&q=70"
+      },
+      {
+        title: "Mobile App Interface",
+        description: "Intuitive mobile app design for iOS and Android",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=70"
+      },
+      {
+        title: "Web Development",
+        description: "Custom web applications built with modern technologies",
+        image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=70"
+      },
+      {
+        title: "UI/UX Design",
+        description: "User-centered design that enhances user experience",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=70"
+      },
+      {
+        title: "Responsive Layout",
+        description: "Web designs that work perfectly on all devices",
+        image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=70"
+      },
+      {
+        title: "Web Performance",
+        description: "Optimized websites for fast loading and high performance",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=70"
+      },
+      {
+        title: "Security & Compliance",
+        description: "Secure web applications with industry standards",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=70"
+      }
+    ],
+    events: [
+      {
+        title: "Wedding Photography",
+        description: "Capturing beautiful moments on your special day",
+        image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=70"
+      },
+      {
+        title: "Corporate Event",
+        description: "Professional event photography for business functions",
+        image: "https://images.unsplash.com/photo-1464047736614-af63643285bf?w=800&q=70"
+      },
+      {
+        title: "Product Launch",
+        description: "Event photography for product launches and exhibitions",
+        image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=70"
+      },
+      {
+        title: "Private Celebration",
+        description: "Personal event photography for private celebrations",
+        image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=70"
+      },
+      {
+        title: "Event Planning",
+        description: "Complete event planning and management services",
+        image: "https://images.unsplash.com/photo-1523503433664-037e378d7094?w=800&q=70"
+      },
+      {
+        title: "Venue Decoration",
+        description: "Beautiful venue decorations for any occasion",
+        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=70"
+      },
+      {
+        title: "Catering Services",
+        description: "Delicious food and beverage services for events",
+        image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=70"
+      },
+      {
+        title: "Entertainment",
+        description: "Live entertainment and music for events",
+        image: "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=800&q=70"
+      }
+    ],
+    billboard: [
+      {
+        title: "Digital Billboard",
+        description: "High-impact digital advertising on billboards",
+        image: "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&q=70"
+      },
+      {
+        title: "Outdoor Advertising",
+        description: "Strategically placed billboards for maximum exposure",
+        image: "https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?w=800&q=70"
+      },
+      {
+        title: "Billboard Design",
+        description: "Creative billboard designs that stand out",
+        image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=70"
+      },
+      {
+        title: "Highway Billboard",
+        description: "Large format billboards on major highways",
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=70"
+      },
+      {
+        title: "Urban Advertising",
+        description: "Billboard advertising in urban areas",
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=70"
+      },
+      {
+        title: "Brand Visibility",
+        description: "Billboard campaigns that increase brand awareness",
+        image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=70"
+      },
+      {
+        title: "Night Advertising",
+        description: "Illuminated billboards for night-time visibility",
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=70"
+      },
+      {
+        title: "Interactive Billboard",
+        description: "Interactive billboard campaigns with audience engagement",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=70"
+      }
+    ],
+    renovation: [
+      {
+        title: "Kitchen Renovation",
+        description: "Modern kitchen designs and renovations",
+        image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=70"
+      },
+      {
+        title: "Bathroom Renovation",
+        description: "Luxurious bathroom designs and renovations",
+        image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=70"
+      },
+      {
+        title: "Living Room Renovation",
+        description: "Beautiful living room designs and renovations",
+        image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=70"
+      },
+      {
+        title: "Bedroom Renovation",
+        description: "Comfortable bedroom designs and renovations",
+        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=70"
+      },
+      {
+        title: "Full House Renovation",
+        description: "Complete house renovation services",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=70"
+      },
+      {
+        title: "Interior Design",
+        description: "Professional interior design services",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=70"
+      },
+      {
+        title: "3D Visualization",
+        description: "3D renderings of renovation projects",
+        image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=70"
+      },
+      {
+        title: "Construction Services",
+        description: "Full construction and renovation services",
+        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&q=70"
+      }
+    ]
+  };
+
+  // DOM elements
+  const categorySelect = document.getElementById('service-category');
+  const galleryContainer = document.getElementById('services-gallery-container');
+
+  // Show gallery for selected category
+  categorySelect.addEventListener('change', function() {
+    const selectedCategory = this.value;
+    showGallery(selectedCategory);
+  });
+
+    // Function to show gallery (now supports optional options list)
+    function showGallery(category, showOptions = false) {
+    // Clear existing gallery
+    galleryContainer.innerHTML = '';
+
+    // Check if category is selected
+    if (!category) {
+      galleryContainer.innerHTML = `
+        <div class="loading">
+          <p>Select a category from the dropdown to view our complete gallery</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Get all images for the selected category
+    let images = [];
+    if (category === 'all') {
+      // Get all images from all categories
+      Object.values(serviceGalleries).forEach(gallery => {
+        images = images.concat(gallery);
+      });
+    } else {
+      images = serviceGalleries[category];
+    }
+
+    // Show loading
+    galleryContainer.innerHTML = `
+      <div class="loading">
+        <p>Loading gallery... Please wait.</p>
+      </div>
+    `;
+
+      // Simulate loading time
+      setTimeout(() => {
+        // Clear loading
+        galleryContainer.innerHTML = '';
+
+        // If requested, render options list (titles) above the gallery
+        if (showOptions) {
+          const opts = document.createElement('div');
+          opts.className = 'gallery-options';
+          opts.style.display = 'flex';
+          opts.style.gap = '0.5rem';
+          opts.style.flexWrap = 'wrap';
+          opts.style.marginBottom = '1rem';
+
+          images.forEach((it, i) => {
+            const b = document.createElement('button');
+            b.className = 'btn';
+            b.style.padding = '.4rem .8rem';
+            b.style.fontSize = '.85rem';
+            b.textContent = it.title;
+            b.addEventListener('click', () => {
+              // Scroll to matching thumbnail and highlight
+              const thumb = galleryContainer.querySelectorAll('.gallery-item')[i];
+              if (thumb) {
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                thumb.style.outline = '3px solid rgba(240,165,0,.18)';
+                setTimeout(() => thumb.style.outline = '', 1600);
+                const img = thumb.querySelector('img');
+                if (img) openLightbox(img);
+              }
+            });
+            opts.appendChild(b);
+          });
+
+          galleryContainer.appendChild(opts);
+        }
+
+        // Create gallery items
+        images.forEach((item, index) => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          galleryItem.style.transitionDelay = `${index * 50}ms`;
+                    
+          galleryItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" loading="lazy" onclick="openLightbox(this)">
+            <div class="gallery-item-overlay">
+              <h3 class="gallery-item-title">${item.title}</h3>
+              <p class="gallery-item-description">${item.description}</p>
+            </div>
+          `;
+                    
+          galleryContainer.appendChild(galleryItem);
+
+          // Add visible class after DOM is updated
+          setTimeout(() => {
+            galleryItem.classList.add('visible');
+          }, 10);
+        });
+      }, 500);
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Services Gallery initialized');
   });
 
   /* =============================================================
@@ -1793,6 +2284,65 @@
      10. FOOTER YEAR
   ============================================================= */
   document.getElementById('year').textContent = new Date().getFullYear();
+ 
+
+  /* =============================================================
+     11. TEST GALLERY FUNCTIONALITY
+  ============================================================= */
+  function testGalleryFunctionality() {
+    console.log('Testing gallery functionality...');
+    
+    // Check if service cards and galleries exist
+    const serviceCards = document.querySelectorAll('.service-card');
+    console.log('Found service cards:', serviceCards.length);
+    
+    serviceCards.forEach((card, index) => {
+      const learnBtn = card.querySelector('.service-learn');
+      const gallery = card.querySelector('.service-gallery');
+      
+      console.log(`Card ${index + 1}:`);
+      console.log('  Learn button:', learnBtn ? 'Exists' : 'Missing');
+      console.log('  Gallery:', gallery ? 'Exists' : 'Missing');
+      
+      if (gallery) {
+        console.log('  Gallery ID:', gallery.id);
+        console.log('  Gallery has active class:', gallery.classList.contains('active'));
+        console.log('  Gallery display style:', window.getComputedStyle(gallery).display);
+        
+        // Check if gallery has images
+        const images = gallery.querySelectorAll('img');
+        console.log('  Number of images:', images.length);
+        
+        images.forEach((img, imgIndex) => {
+          console.log(`  Image ${imgIndex + 1}:`, img.src);
+        });
+      }
+    });
+    
+    // Check if CSS styles are loaded
+    const styleTest = document.createElement('div');
+    styleTest.className = 'service-gallery active';
+    styleTest.style.position = 'absolute';
+    styleTest.style.top = '-9999px';
+    document.body.appendChild(styleTest);
+    
+    const computedStyle = window.getComputedStyle(styleTest);
+    console.log('Service gallery active display style:', computedStyle.display);
+    
+    document.body.removeChild(styleTest);
+  }
+
+  // Run test on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded');
+    testGalleryFunctionality();
+  });
+  
+  window.addEventListener('load', () => {
+    console.log('Page fully loaded');
+    setTimeout(testGalleryFunctionality, 1000);
+  });
+   </script>
 
 </script>
 </body>

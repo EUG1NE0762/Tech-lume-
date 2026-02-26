@@ -49,7 +49,26 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('[data-ct]').forEach(el => cobs.observe(el));
 
-  /* ── 5. SERVICE PANEL TOGGLE ──
+  /* ── 5. SERVICE GALLERY TOGGLE ──
+     Shows/hides the gallery for each service card
+  */
+  function toggleGallery(el, service) {
+    const card = el.closest('.service-card');
+    const gallery = card.querySelector('.service-gallery');
+    const isOpen = gallery.classList.contains('active');
+    
+    // Close all other galleries
+    document.querySelectorAll('.service-gallery').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.service-learn').forEach(l => l.style.opacity = '1');
+    
+    // Toggle current gallery
+    if (!isOpen) {
+      gallery.classList.add('active');
+      el.style.opacity = '0.5';
+    }
+  }
+
+  /* ── 5b. SERVICE PANEL TOGGLE ──
      Panels live in the same CSS grid as the cards,
      so grid-column:1/-1 makes them span full width below all cards.
      Only one panel open at a time.
@@ -70,6 +89,25 @@
 
   /* ── 6. LIGHTBOX ── */
   let lbStack = [], lbIdx = 0;
+
+  /* Open lightbox from service gallery */
+  function openLightbox(imgEl) {
+    const gallery = imgEl.closest('.service-gallery');
+    if (gallery) {
+      const images = [...gallery.querySelectorAll('img')];
+      lbStack = images.map(img => ({
+        src: img.src,
+        cap: img.alt || ''
+      }));
+      const clickSrc = imgEl.src;
+      lbIdx = lbStack.findIndex(i => i.src === clickSrc);
+      if (lbIdx < 0) lbIdx = 0;
+    } else {
+      lbStack = [{ src: imgEl.src, cap: imgEl.alt || '' }];
+      lbIdx = 0;
+    }
+    showLb();
+  }
 
   /* Used by service panel photos — builds stack from open panel */
   function openLbUrl(src, cap) {

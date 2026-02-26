@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Gallery Functionality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #090c10;
+            color: #f5f0e8;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .service-card {
+            background-color: #131a22;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem;
+            display: inline-block;
+            width: 300px;
+            vertical-align: top;
+        }
+
+        .service-learn {
+            color: #f0a500;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .service-learn:hover {
+            opacity: 0.8;
+        }
+
+        .service-gallery {
+            display: none !important;
+            margin-top: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-gallery.active {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+            opacity: 1;
+        }
+
+        .service-gallery img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.85);
+        }
+
+        .service-gallery img:hover {
+            transform: scale(1.04);
+            filter: brightness(1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Gallery Functionality</h1>
+
+    <!-- Service Card 1: Web Development -->
+    <div class="service-card" data-service="web">
+        <div class="service-icon">🌐</div>
+        <h3>Web Development</h3>
+        <p>Blazing-fast, responsive websites and web apps built with cutting-edge technologies.</p>
+        <div class="service-learn" onclick="console.log('Learn More clicked for web'); toggleGallery(this, 'web')">
+            Learn More <span>→</span>
+        </div>
+        <div class="service-gallery" id="gallery-web">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&q=70" alt="Web Dev 1" onclick="openLightbox(this)"/>
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=300&q=70" alt="Web Dev 2" onclick="openLightbox(this)"/>
+            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=300&q=70" alt="Web Dev 3" onclick="openLightbox(this)"/>
+        </div>
+    </div>
+
+    <!-- Service Card 2: Events & Photography -->
+    <div class="service-card" data-service="events">
+        <div class="service-icon">📸</div>
+        <h3>Events & Photography</h3>
+        <p>Professional event planning and photography for weddings, corporate parties, and beyond.</p>
+        <div class="service-learn" onclick="console.log('Learn More clicked for events'); toggleGallery(this, 'events')">
+            Learn More <span>→</span>
+        </div>
+        <div class="service-gallery" id="gallery-events">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=300&q=70" alt="Wedding 1" onclick="openLightbox(this)"/>
+            <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=300&q=70" alt="Event 2" onclick="openLightbox(this)"/>
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=300&q=70" alt="Event 3" onclick="openLightbox(this)"/>
+        </div>
+    </div>
+
+    <script>
+        function toggleGallery(btn, serviceId) {
+            console.log('toggleGallery called with serviceId:', serviceId);
+            
+            // Try to find the gallery using both methods (ID and closest card)
+            let gallery = document.getElementById('gallery-' + serviceId);
+            if (!gallery) {
+                const card = btn.closest('.service-card');
+                if (card) {
+                    gallery = card.querySelector('.service-gallery');
+                }
+            }
+            
+            console.log('Found gallery:', gallery);
+            
+            if (!gallery) {
+                console.error('Gallery not found for serviceId:', serviceId);
+                alert('Error: Gallery not found for service "' + serviceId + '"');
+                return;
+            }
+            
+            const isActive = gallery.classList.contains('active');
+            console.log('Gallery is active:', isActive);
+
+            // Close all open galleries first
+            document.querySelectorAll('.service-gallery.active').forEach(g => {
+                g.classList.remove('active');
+                console.log('Closing gallery:', g.id);
+            });
+            document.querySelectorAll('.service-learn').forEach(b => {
+                const span = b.querySelector('span');
+                if (span) {
+                    span.textContent = '→';
+                }
+            });
+
+            if (!isActive) {
+                gallery.classList.add('active');
+                const span = btn.querySelector('span');
+                if (span) {
+                    span.textContent = '↑';
+                }
+                // Smooth scroll so gallery is visible
+                setTimeout(() => {
+                    gallery.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 50);
+            }
+            
+            console.log('Gallery classes after toggle:', gallery.classList);
+            console.log('Gallery style.display:', gallery.style.display);
+            console.log('Gallery computed style:', window.getComputedStyle(gallery).display);
+        }
+
+        function testGalleryFunctionality() {
+            console.log('Testing gallery functionality...');
+            
+            const serviceCards = document.querySelectorAll('.service-card');
+            console.log('Found service cards:', serviceCards.length);
+            
+            serviceCards.forEach((card, index) => {
+                const learnBtn = card.querySelector('.service-learn');
+                const gallery = card.querySelector('.service-gallery');
+                
+                console.log(`Card ${index + 1}:`);
+                console.log('  Learn button:', learnBtn ? 'Exists' : 'Missing');
+                console.log('  Gallery:', gallery ? 'Exists' : 'Missing');
+                
+                if (gallery) {
+                    console.log('  Gallery ID:', gallery.id);
+                    console.log('  Gallery has active class:', gallery.classList.contains('active'));
+                    console.log('  Gallery display style:', window.getComputedStyle(gallery).display);
+                    
+                    const images = gallery.querySelectorAll('img');
+                    console.log('  Number of images:', images.length);
+                    
+                    images.forEach((img, imgIndex) => {
+                        console.log(`  Image ${imgIndex + 1}:`, img.src);
+                    });
+                }
+            });
+            
+            const styleTest = document.createElement('div');
+            styleTest.className = 'service-gallery active';
+            styleTest.style.position = 'absolute';
+            styleTest.style.top = '-9999px';
+            document.body.appendChild(styleTest);
+            
+            const computedStyle = window.getComputedStyle(styleTest);
+            console.log('Service gallery active display style:', computedStyle.display);
+            
+            document.body.removeChild(styleTest);
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(testGalleryFunctionality, 1000);
+        });
+    </script>
+</body>
+</html>
